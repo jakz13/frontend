@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuarios - Ricardo Style</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Fondo animado -->
+<div class="background-container">
+    <!-- Usa un GIF directo desde URL -->
+    <img src="https://images.steamusercontent.com/ugc/943968455599328520/715C5F83407DB77E09B30084A1E62BBD62F07FEB/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false" id="ricardoGif" alt="Ricardo Milos bailando">
+    <div class="video-overlay"></div>
+</div>
+
+<!-- Contenido principal -->
+<div class="container-fluid main-container">
+    <div class="row justify-content-center align-items-center min-vh-100">
+        <div class="col-md-6 col-lg-4">
+            <div class="card glass-card">
+                <div class="card-body p-4">
+                    <h2 class="card-title text-center mb-4 text-white">
+                        <i class="fas fa-user-plus me-2"></i>Registro de Usuario
+                    </h2>
+
+                    <!-- Formulario de registro -->
+                    <form id="userForm">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label text-white">Nombre</label>
+                            <input type="text" class="form-control glass-input" id="nombre" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label text-white">Email</label>
+                            <input type="email" class="form-control glass-input" id="email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label text-white">Teléfono</label>
+                            <input type="tel" class="form-control glass-input" id="telefono" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 ricardo-btn">
+                            <i class="fas fa-save me-2"></i>Registrar Usuario
+                        </button>
+                    </form>
+
+                    <!-- Botón para ver usuarios -->
+                    <button id="showUsersBtn" class="btn btn-outline-light w-100 mt-3">
+                        <i class="fas fa-list me-2"></i>Ver Usuarios Registrados
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para mostrar usuarios -->
+<div class="modal fade" id="usersModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content glass-modal">
+            <div class="modal-header">
+                <h5 class="modal-title text-white">Usuarios Registrados</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="usersList" class="text-white">
+                    <!-- Los usuarios se cargarán aquí -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+<!-- Tu JavaScript -->
+<script src="app.js"></script>
+</body>
+</html>
