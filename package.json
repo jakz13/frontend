@@ -1,0 +1,20 @@
+{
+  "name": "frontend-user-registration",
+  "version": "1.0.0",
+  "description": "Frontend para sistema de registro de usuarios con notificaciones",
+  "main": "public/index.html",
+  "scripts": {
+    "dev": "python -m http.server 3000",
+    "build": "echo 'Frontend estático - no necesita build'",
+    "serve": "npx serve public -p 3000"
+  },
+  "keywords": ["frontend", "registration", "bootstrap", "javascript"],
+  "author": "Felipe Bernardi - Junior Curbelo",
+  "license": "Israel Bellizi",
+  "dependencies": {
+    "bootstrap": "^5.3.0"
+  },
+  "devDependencies": {
+    "serve": "^14.0.0"
+  }
+}
