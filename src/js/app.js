@@ -1,16 +1,18 @@
 import { UsersAPI } from './api/users-api.js';
 import { Helpers } from './utils/helpers.js';
 import { CONFIG } from '../config/constants.js';
+import { ManejadorConexion } from './manejador-conexion.js';
 
 class UserRegistrationApp {
     constructor() {
         this.usersAPI = new UsersAPI();
+        this.manejadorConexion = new ManejadorConexion(); // NUEVA LINEA
         this.init();
     }
 
-    init() {
+    async init() { // Cambiar a async
         this.bindEvents();
-        this.checkAPIHealth();
+        await this.manejadorConexion.inicializar(); // NUEVA LINEA
         this.addInputAnimations();
     }
 
@@ -31,14 +33,18 @@ class UserRegistrationApp {
 
         try {
             Helpers.showLoading(submitBtn);
-            await this.usersAPI.createUser(formData);
+
+            // CAMBIAR ESTA LÍNEA:
+            // await this.usersAPI.createUser(formData);
+            // POR ESTA:
+            await this.manejadorConexion.crearUsuario(formData);
 
             Helpers.showNotification(CONFIG.MESSAGES.SUCCESS, 'success');
             this.resetForm();
             this.animateSuccess();
         } catch (error) {
             console.error('Registration error:', error);
-            Helpers.showNotification(CONFIG.MESSAGES.ERROR, 'error');
+            Helpers.showNotification(error.message || CONFIG.MESSAGES.ERROR, 'error');
         } finally {
             Helpers.hideLoading(submitBtn);
         }
@@ -88,7 +94,8 @@ class UserRegistrationApp {
             usersList.innerHTML = this.getLoadingHTML();
             modal.show();
 
-            const users = await this.usersAPI.getUsers();
+            const users = await this.manejadorConexion.obtenerUsuarios();
+
             usersList.innerHTML = this.renderUsersList(users);
         } catch (error) {
             console.error('Error loading users:', error);
