@@ -16,7 +16,8 @@ export const CONFIG = {
         }
     },
     VALIDATION: {
-        EMAIL_REGEX: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-        PHONE_REGEX: /^[\+]?[0-9\s\-\(\)]{10,}$/
+            EMAIL_REGEX: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            // ACEPTA: +598 099 777 007, 099777007, +54 11 1234-5678, etc.
+            PHONE_REGEX: /^[\+]?[0-9][0-9\s\-\(\)\.]{6,}$/
     }
 };
